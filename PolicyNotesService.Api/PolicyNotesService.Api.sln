@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36518.9 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolicyNotesService.Api", "PolicyNotesService.Api.csproj", "{9F0B3E9E-5A25-4108-B105-903CEFAB6875}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolicyNotesService.Tests", "..\PolicyNotesService.Tests\PolicyNotesService.Tests.csproj", "{58387975-0205-42C0-8272-4A2EE5E29057}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9F0B3E9E-5A25-4108-B105-903CEFAB6875}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F0B3E9E-5A25-4108-B105-903CEFAB6875}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F0B3E9E-5A25-4108-B105-903CEFAB6875}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F0B3E9E-5A25-4108-B105-903CEFAB6875}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58387975-0205-42C0-8272-4A2EE5E29057}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58387975-0205-42C0-8272-4A2EE5E29057}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58387975-0205-42C0-8272-4A2EE5E29057}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58387975-0205-42C0-8272-4A2EE5E29057}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CFC2DBF3-2F2E-44F5-A96B-B0D952A3D18E}
+	EndGlobalSection
+EndGlobal
