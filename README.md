@@ -59,3 +59,36 @@ The service is built with **.NET 8 Minimal APIs**, uses **EF Core InMemory** as 
 └── PolicyNotesService.Tests
     ├── PolicyNoteServiceTests.cs        # Unit tests
     └── NotesIntegrationTests.cs         # Integration tests (WebApplicationFactory<Program>)
+
+```
+
+## 🚀 Getting Started
+
+### Prerequisites
+- .NET 8 SDK
+- Visual Studio 2022 / VS Code / Rider (any IDE that supports .NET 8)
+
+### Clone the Repository
+```
+git clone <your-repo-url>.git
+cd PolicyNotesService
+```
+
+### Run the API (from CLI)
+```
+cd PolicyNotesService.Api
+dotnet run
+```
+
+The API will start on a port similar to:
+```
+https://localhost:7101
+http://localhost:5101
+```
+
+Swagger UI
+Open the browser at:
+```
+https://localhost:7101/swagger
+```
+
