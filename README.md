@@ -92,3 +92,72 @@ Open the browser at:
 https://localhost:7101/swagger
 ```
 
+## 🧪 Testing
+
+Run All Tests (CLI)
+From the solution root:
+```
+dotnet test
+```
+This will run both:
+- Unit tests in PolicyNoteServiceTests.cs
+- Integration tests in NotesIntegrationTests.cs
+
+### Unit Tests (xUnit)
+File: PolicyNotesService.Tests/PolicyNoteServiceTests.cs
+Covers:
+1. Adding a note
+- AddNoteAsync_Should_Add_New_Note
+  -- Uses PolicyNotesDbContext with InMemory provider
+  -- Verifies that:
+
+Id is generated
+
+PolicyNumber and Note match the input
+
+Retrieving notes
+
+GetNotesAsync_Should_Return_Notes
+
+Adds 2 notes via the service
+
+Verifies that GetNotesAsync() returns 2 items
+
+Integration Tests (xUnit + WebApplicationFactory)
+
+File: PolicyNotesService.Tests/NotesIntegrationTests.cs
+
+Uses WebApplicationFactory<Program> to spin up an in-memory test server.
+
+Covers:
+
+POST /notes returns 201 Created
+
+Sends a JSON body with policyNumber and note
+
+Asserts StatusCode == 201 Created
+
+GET /notes returns 200 OK
+
+Ensures at least one note exists (via POST)
+
+Calls GET /notes
+
+Asserts StatusCode == 200 OK
+
+GET /notes/{id} returns 200 OK when found
+
+Creates a note via POST
+
+Reads the created id from response
+
+Calls GET /notes/{id}
+
+Asserts StatusCode == 200 OK
+
+GET /notes/{id} returns 404 NotFound when missing
+
+Calls GET /notes/99999 (or some non-existing id)
+
+Asserts StatusCode == 404 NotFound
+
