@@ -104,60 +104,45 @@ This will run both:
 - Integration tests in NotesIntegrationTests.cs
 
 ### Unit Tests (xUnit)
-File: PolicyNotesService.Tests/PolicyNoteServiceTests.cs
-Covers:
-1. Adding a note
-- AddNoteAsync_Should_Add_New_Note
-  -- Uses PolicyNotesDbContext with InMemory provider
-  -- Verifies that:
+**File:** `PolicyNotesService.Tests/PolicyNoteServiceTests.cs`
+#### Covers:
+1. **Adding a note**
+   - `AddNoteAsync_Should_Add_New_Note`
+     - Uses `PolicyNotesDbContext` with InMemory provider
+     - Verifies that:
+       - `Id` is generated
+       - `PolicyNumber` and `Note` match the input
 
-Id is generated
+2. **Retrieving notes**
+   - `GetNotesAsync_Should_Return_Notes`
+     - Adds 2 notes via the service
+     - Verifies that `GetNotesAsync()` returns 2 items
 
-PolicyNumber and Note match the input
 
-Retrieving notes
+### 🧪 Integration Tests (xUnit + WebApplicationFactory)
 
-GetNotesAsync_Should_Return_Notes
+**File:** `PolicyNotesService.Tests/NotesIntegrationTests.cs`  
+Uses `WebApplicationFactory<Program>` to spin up an in-memory test server and call the API endpoints just like a real client.
 
-Adds 2 notes via the service
+#### Covers:
 
-Verifies that GetNotesAsync() returns 2 items
+1. **POST `/notes` returns `201 Created`**
+   - Sends a JSON body with `policyNumber` and `note`
+   - Asserts `StatusCode == 201 Created`
 
-Integration Tests (xUnit + WebApplicationFactory)
+2. **GET `/notes` returns `200 OK`**
+   - Ensures at least one note exists (via POST)
+   - Calls `GET /notes`
+   - Asserts `StatusCode == 200 OK`
 
-File: PolicyNotesService.Tests/NotesIntegrationTests.cs
+3. **GET `/notes/{id}` returns `200 OK` when found**
+   - Creates a note via POST
+   - Reads the created `id` from the response
+   - Calls `GET /notes/{id}`
+   - Asserts `StatusCode == 200 OK`
 
-Uses WebApplicationFactory<Program> to spin up an in-memory test server.
+4. **GET `/notes/{id}` returns `404 NotFound` when missing**
+   - Calls `GET /notes/999999` (or another non-existing id)
+   - Asserts `StatusCode == 404 NotFound`
 
-Covers:
-
-POST /notes returns 201 Created
-
-Sends a JSON body with policyNumber and note
-
-Asserts StatusCode == 201 Created
-
-GET /notes returns 200 OK
-
-Ensures at least one note exists (via POST)
-
-Calls GET /notes
-
-Asserts StatusCode == 200 OK
-
-GET /notes/{id} returns 200 OK when found
-
-Creates a note via POST
-
-Reads the created id from response
-
-Calls GET /notes/{id}
-
-Asserts StatusCode == 200 OK
-
-GET /notes/{id} returns 404 NotFound when missing
-
-Calls GET /notes/99999 (or some non-existing id)
-
-Asserts StatusCode == 404 NotFound
 
